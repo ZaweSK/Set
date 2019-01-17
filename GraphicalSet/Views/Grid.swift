@@ -147,7 +147,7 @@ struct Grid{
         return minimumAllowedSize
     }
     
-    private mutating func updateCellFrames(to: CGSize){
+    private mutating func updateCellFrames(to cellSize: CGSize){
         cellFrames.removeAll()
         let boundingSize = CGSize(width: CGFloat(dimensions.columnCount) * cellSize.width,
                                   height: CGFloat(dimensions.rowCount) * cellSize.height)

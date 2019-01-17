@@ -33,19 +33,31 @@ class CardButton: UIButton {
         case outlined
     }
     
-    var numberOfSymbols = 3
-    var symbolShape: SymbolShape? = .diamond
-    var cardColor: CardColor? = .green
-    var shading: Shading? = .solid
-    
-    init(){
-        super.init(frame: .zero)
-        backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    var numberOfSymbols = 0 {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    var symbolShape: SymbolShape?  {
+        didSet {
+            setNeedsDisplay()
+        }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    var cardColor: CardColor?  {
+        didSet {
+            setNeedsDisplay()
+        }
     }
+    
+    var shading: Shading?  {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+   
     
     private var shapeHorizontalMargin: CGFloat {
         return drawableRect.width * 0.05
@@ -64,7 +76,6 @@ class CardButton: UIButton {
     }
     
     private var drawableCenter: CGPoint {
-//        retunr CGPoint(x: <#T##CGFloat#>, y: <#T##CGFloat#>)
         return CGPoint(x: drawableRect.midX , y: drawableRect.midY)
     }
     
@@ -106,7 +117,28 @@ class CardButton: UIButton {
             cardColor.setStroke()
             path!.lineWidth = 2
             path!.stroke()
-        case .striped: break
+            
+        case .striped:
+            path!.lineWidth = 0.01 * frame.size.width
+            cardColor.setStroke()
+            path!.stroke()
+            path!.addClip()
+            
+            var currentX: CGFloat = 0
+            
+            let stripedPath = UIBezierPath()
+            stripedPath.lineWidth = 0.005 * frame.size.width
+            
+            while currentX < frame.size.width {
+                stripedPath.move(to: CGPoint(x: currentX, y: 0))
+                stripedPath.addLine(to: CGPoint(x: currentX, y: frame.size.height))
+                currentX += 0.03 * frame.size.width
+            }
+            
+            cardColor.setStroke()
+            stripedPath.stroke()
+            
+            break
         }
         
         //        let path = UIBezierPath()
@@ -141,6 +173,7 @@ class CardButton: UIButton {
             
             path.addLine(to: CGPoint(x: currentShapeX, y: currentShapeY))
         }
+        self.path = path
     }
     
     

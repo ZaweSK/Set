@@ -21,16 +21,11 @@ struct SetGame {
     var alreadyMatchedCards = [Card]()
     var selectedCards = [Card]()
     
-    lazy var beingPlayedCards: [Card?] = {
-        var cards = [Card]()
-        for i in 1...16 {
-            cards += [deck.removeFirst()]
-        }
-        return cards
-    }()
+    var beingPlayedCards = [Card]()
+     
     
-    mutating func addCardsToGame(numberOfCardsToAdd: Int)->[Card?]{
-        var cardsToReturn = [Card?]()
+    mutating func addCardsToGame(numberOfCardsToAdd: Int)->[Card]{
+        var cardsToReturn = [Card]()
         for i in 0..<numberOfCardsToAdd{
             cardsToReturn += [deck.remove(at: i)]
         }
