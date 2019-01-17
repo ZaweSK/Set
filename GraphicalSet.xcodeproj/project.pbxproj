@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D010532521EF0C3100CF4D01 /* CardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D010532421EF0C3100CF4D01 /* CardButton.swift */; };
+		D010532721F0554200CF4D01 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D010532621F0554200CF4D01 /* Grid.swift */; };
 		D0B2BD5A21EE1B98000B0405 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2BD5921EE1B98000B0405 /* AppDelegate.swift */; };
 		D0B2BD5C21EE1B98000B0405 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2BD5B21EE1B98000B0405 /* ViewController.swift */; };
 		D0B2BD5F21EE1B98000B0405 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B2BD5D21EE1B98000B0405 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		D010532421EF0C3100CF4D01 /* CardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardButton.swift; sourceTree = "<group>"; };
+		D010532621F0554200CF4D01 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		D0B2BD5621EE1B98000B0405 /* GraphicalSet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphicalSet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B2BD5921EE1B98000B0405 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B2BD5B21EE1B98000B0405 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				D010532421EF0C3100CF4D01 /* CardButton.swift */,
 				D0B2BD5B21EE1B98000B0405 /* ViewController.swift */,
 				D0B2BD6F21EE22F2000B0405 /* CardsContainerView.swift */,
+				D010532621F0554200CF4D01 /* Grid.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				D0B2BD5C21EE1B98000B0405 /* ViewController.swift in Sources */,
 				D0B2BD6C21EE1BD1000B0405 /* Card.swift in Sources */,
 				D0B2BD6E21EE1BF4000B0405 /* SetGame.swift in Sources */,
+				D010532721F0554200CF4D01 /* Grid.swift in Sources */,
 				D0B2BD5A21EE1B98000B0405 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
