@@ -12,19 +12,57 @@ class CardsContainerView: UIView {
     
     
     private(set) var buttons = [CardButton]()
-//    private(set) var grid = Grid(layout: Grid.ayout.aspectRatio(3/2))
-
-
-
-    override func draw(_ rect: CGRect) {
-        
-      let myView = CardButton()
-//      myView.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-      addSubview(myView)
-        myView.bounds.size = CGSize(width: 100, height: 100)
-//        myView.frame = CGRect(origin: super.bounds.origin, size: CGSize(width: 150, height: 150))
-//        myView.frame = CGRect(x: 10, y: 10, width: 150, height: 150)
-        myView.frame.origin = CGPoint(x: super.bounds.maxX - myView.bounds.width - 10 , y: 50)
+    private(set) var grid = Grid(layout: Grid.Layout.aspectRatio(3/2))
+    
+    private var centeredRect: CGRect {
+        get {
+            return CGRect(x: bounds.size.width * 0.025,
+                          y: bounds.size.height * 0.025,
+                          width: bounds.size.width * 0.95,
+                          height: bounds.size.height * 0.95)
+        }
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        grid.frame = centeredRect
+        
+        for (i, button) in buttons.enumerated(){
+            if let frame = grid[i]{
+            button.frame = frame
+            button.layer.cornerRadius = 10
+            button.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+            button.layer.borderWidth = 0.5
+            }
+        }
+    }
+    
+    func addCardButtons(byAmount numberOfButtons: Int = 3) {
+        let cardButtons = (0..<numberOfButtons).map { _ in CardButton() }
+        for button in cardButtons {
+            addSubview(button)
+        }
+        
+        buttons += cardButtons
+        grid.cellCount = buttons.count
+        setNeedsLayout()
+    }
+    
+    /// Removes all buttons from the container.
+    func clearCardContainer() {
+        buttons = []
+        grid.cellCount = 0
+        removeAllSubViews()
+        setNeedsLayout()
+    }
+}
 
+extension UIView{
+    func removeAllSubViews(){
+        for subview in subviews {
+            subview.removeFromSuperview()
+        }
+    }
+    
 }
