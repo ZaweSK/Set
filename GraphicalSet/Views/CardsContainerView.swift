@@ -30,10 +30,11 @@ class CardsContainerView: UIView {
         
         for (i, button) in buttons.enumerated(){
             if let frame = grid[i]{
-            button.frame = frame
-            button.layer.cornerRadius = 10
-            button.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-            button.layer.borderWidth = 0.5
+                button.frame = frame
+                button.layer.cornerRadius = 10
+                button.layer.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                button.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+                button.layer.borderWidth = 0.5
             }
         }
     }

@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        game.beingPlayedCards = game.addCardsToGame(numberOfCardsToAdd: 12)
-        cardsContainerView.addCardButtons(byAmount: 12)
+        game.beingPlayedCards = game.addCardsToGame(numberOfCardsToAdd: 50)
+        cardsContainerView.addCardButtons(byAmount: 50)
         
         print(cardsContainerView.buttons.count)
         

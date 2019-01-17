@@ -26,8 +26,8 @@ struct SetGame {
     
     mutating func addCardsToGame(numberOfCardsToAdd: Int)->[Card]{
         var cardsToReturn = [Card]()
-        for i in 0..<numberOfCardsToAdd{
-            cardsToReturn += [deck.remove(at: i)]
+        for _ in 0..<numberOfCardsToAdd{
+            cardsToReturn += [deck.removeFirst()]
         }
         return cardsToReturn
     }
