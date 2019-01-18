@@ -9,6 +9,10 @@
 import UIKit
 
 class CardButton: UIButton {
+    override var description: String {
+        return ("Symbol: \(self.symbolShape), Number: \(self.numberOfSymbols), Color : \(self.cardColor), SHading : \(self.shading)")
+    }
+    
     enum SymbolShape{
         case squiggle
         case diamond

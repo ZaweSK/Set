@@ -61,9 +61,9 @@ struct SetGame {
         
         let result = colorFlag && symbolFlag && shadingFlag && numberFlag
         
-        //        return true
+                return true
         //        return false
-        return result
+//        return result
         
     }
     
@@ -72,6 +72,11 @@ struct SetGame {
             let card = selectedCards.removeLast()
             alreadyMatchedCards += [card]
         }
+    }
+    
+    func selectCard(at index: Int){
+        let card = beingPlayedCards[index]
+        
     }
     
 }

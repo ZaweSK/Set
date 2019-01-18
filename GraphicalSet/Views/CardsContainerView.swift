@@ -11,7 +11,7 @@ import UIKit
 class CardsContainerView: UIView {
     
     
-    private(set) var buttons = [CardButton]()
+    var buttons = [CardButton]()
     private(set) var grid = Grid(layout: Grid.Layout.aspectRatio(3/2))
     
     private var centeredRect: CGRect {
