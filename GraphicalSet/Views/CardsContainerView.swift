@@ -57,6 +57,21 @@ class CardsContainerView: UIView {
         removeAllSubViews()
         setNeedsLayout()
     }
+    
+    /// Removes n buttons from the button container.
+    func removeCardButtons(byAmount numberOfCards: Int) {
+        guard buttons.count >= numberOfCards else { return }
+        
+        for index in 0..<numberOfCards {
+            let button = buttons[index]
+            button.removeFromSuperview()
+        }
+        
+        buttons.removeSubrange(0..<numberOfCards)
+        grid.cellCount = buttons.count
+        
+        setNeedsLayout()
+    }
 }
 
 extension UIView{

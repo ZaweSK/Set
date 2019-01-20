@@ -18,9 +18,11 @@ struct SetGame {
         return deckSetUp.shuffled()
     }()
     
-    var alreadyMatchedCards = [Card]()
-    var selectedCards = [Card]()
+    var matchedDeck = [Card]()
+    var matchedTrio = [Card]()
+    var missmatchedTrio = [Card]()
     
+    var selectedCards = [Card]()
     var beingPlayedCards = [Card]()
      
     
@@ -61,24 +63,64 @@ struct SetGame {
         
         let result = colorFlag && symbolFlag && shadingFlag && numberFlag
         
-                return true
+//                return true
         //        return false
-//        return result
+        return result
         
     }
     
-    mutating func moveMatchedCards(){
+    mutating func moveSelectedCardsToMatchedTrio(){
         for _ in selectedCards{
             let card = selectedCards.removeLast()
-            alreadyMatchedCards += [card]
+            matchedTrio += [card]
         }
     }
     
-    func selectCard(at index: Int){
-        let card = beingPlayedCards[index]
-        
+    mutating func moveSelectedCardsToMissmatchedTrio(){
+        for _ in selectedCards{
+            let card = selectedCards.removeLast()
+            missmatchedTrio += [card]
+        }
     }
     
+    mutating private func removeMatchedTrioFromTable(){
+        for card in matchedTrio{
+            if beingPlayedCards.contains(card){
+                beingPlayedCards.remove(element: card)
+            }
+        }
+        matchedTrio = []
+    }
+    
+    mutating func selectCard(at index: Int){
+        let cardToSelect = beingPlayedCards[index]
+        guard !matchedTrio.contains(cardToSelect) else { return }
+//        guard !matchedDeck.contains(cardToSelect) else { return }
+        
+        if !matchedTrio.isEmpty{
+            removeMatchedTrioFromTable()
+        }
+        
+        if !missmatchedTrio.isEmpty{
+            missmatchedTrio = []
+        }
+        
+        if !selectedCards.contains(cardToSelect) {
+            selectedCards += [cardToSelect]
+        }else{
+            selectedCards.remove(element: cardToSelect)
+        }
+        
+        if selectedCards.count == 3 {
+            if tryAndMatch(){
+                moveSelectedCardsToMatchedTrio()
+            }else{
+                moveSelectedCardsToMissmatchedTrio()
+            }
+            selectedCards = []
+        }
+    
+    }
 }
 
 extension Array where Element: Equatable{
@@ -86,5 +128,13 @@ extension Array where Element: Equatable{
         if let index = self.index(of: element){
             self.remove(at: index)
         }
+    }
+    
+    mutating func removeAllElements() -> [Element]{
+        var removedElements = [Element]()
+        for _ in self{
+            removedElements += [self.removeFirst()]
+        }
+        return removedElements
     }
 }

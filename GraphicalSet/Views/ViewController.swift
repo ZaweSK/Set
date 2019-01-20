@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        game.beingPlayedCards = game.addCardsToGame(numberOfCardsToAdd: 12)
+        game.beingPlayedCards += game.addCardsToGame(numberOfCardsToAdd: 12)
         cardsContainerView.addCardButtons(byAmount: 12)
         assignTargetAction()
         
@@ -37,17 +37,12 @@ class ViewController: UIViewController {
     }
     
     private func displayCards(){
+        if cardsContainerView.buttons.count > game.beingPlayedCards.count {
+            cardsContainerView.removeCardButtons(byAmount: cardsContainerView.buttons.count - game.beingPlayedCards.count)
+        }
+        
         for (index, cardButton) in cardsContainerView.buttons.enumerated(){
             let currentCard = game.beingPlayedCards[index]
-            print("------------------ \(index) --------------------------")
-            print("Current card:")
-            print(currentCard)
-            print("- - - - - - ")
-            print("Card Button: ")
-            print(cardButton)
-            print("- - - ( assigning values to card button ) - - -")
-            
-            
             
             switch currentCard.color{
             case .option1:
@@ -90,12 +85,15 @@ class ViewController: UIViewController {
             if game.selectedCards.contains(currentCard)  {
                 cardButton.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
             } else {
-                print("halo")
-                cardButton.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 0.849352542)
+                cardButton.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
             }
             
-            print("Card Button:")
-            print(cardButton)
+            if game.matchedTrio.contains(currentCard){
+                cardButton.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+            }else if game.missmatchedTrio.contains(currentCard){
+                cardButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+            }
+    
             ////// DOKONCI
             
         }
@@ -146,40 +144,6 @@ class ViewController: UIViewController {
         guard let index = cardsContainerView.buttons.index(of: sender as! CardButton) else {return}
         game.selectCard(at:index)
         displayCards()
-        //        let card = game.beingPlayedCards[buttonIndex]
-//        if !selectedButtonsIndexes.contains(buttonIndex){
-//            selectedButtonsIndexes += [buttonIndex]
-//            game.selectedCards += [card]
-//        }else{
-//            selectedButtonsIndexes.remove(element: buttonIndex)
-//            game.selectedCards.remove(element: card)
-//        }
-//
-//
-//        displayCards()
-//
-//        if selectedButtonsIndexes.count == 3 {
-//            if game.tryAndMatch() {
-//                //moves from selectedCards -> alreadyMatchedCards
-//                game.moveMatchedCards()
-//                //goes through indexes of selected buttons and draws a border
-//                highlightMatchedCardButtons()
-//                //replace cards which were matched in beingPlayedCards with nil
-//                removeMatchedCardsFromTable()
-//            }else{
-//                highlightMissmatchedCardButtons()
-//            }
-//            game.selectedCards.removeAll()
-//            selectedButtonsIndexes.removeAll()
-//        }
-//    }
-//
-//    private func removeMatchedCardsFromTable(){
-//        for index in selectedButtonsIndexes{
-//            game.beingPlayedCards.remove(at: index)
-//            cardsContainerView.buttons.remove(at: index)
-//        }
-        
         
     }
     
