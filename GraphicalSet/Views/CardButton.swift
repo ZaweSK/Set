@@ -122,7 +122,7 @@ class CardButton: UIButton {
             path!.fill()
         case .outlined:
             cardColor.setStroke()
-            path!.lineWidth = 2
+            path!.lineWidth = 0.01 * frame.size.width
             path!.stroke()
             
         case .striped:

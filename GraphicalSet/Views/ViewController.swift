@@ -105,7 +105,7 @@ class ViewController: UIViewController {
     
     private func handleDealMoreCardsButton(){
         dealMoreCardsButton.isEnabled = game.deck.count > 0
-        dealMoreCardsButton.setColor()
+//        dealMoreCardsButton.setColor()
     }
     
     @IBOutlet weak var dealMoreCardsButton: UIButton!
@@ -144,7 +144,6 @@ class ViewController: UIViewController {
         guard let index = cardsContainerView.buttons.index(of: sender as! CardButton) else {return}
         game.selectCard(at:index)
         displayCards()
-        
     }
     
     private func highlightMatchedCardButtons(){

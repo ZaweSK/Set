@@ -18,26 +18,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3J-1l-ybK" customClass="CardsContainerView" customModule="GraphicalSet" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3J-1l-ybK" customClass="CardsContainerView" customModule="GraphicalSet" customModuleProvider="target">
                                 <rect key="frame" x="16" y="20" width="288" height="484"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.18614682045013742" green="0.67856581097981061" blue="0.94798937186243648" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803915" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="aIB-SS-pKi" appends="YES" id="gfa-6S-Yr1"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezp-vJ-Ouj">
-                                <rect key="frame" x="120" y="518" width="81" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.94164419420000001" green="0.54121495600000002" blue="0.01731035626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezp-vJ-Ouj">
+                                <rect key="frame" x="144.5" y="518" width="31" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Deal"/>
                                 <connections>
                                     <action selector="dealMoreCards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zmh-ja-saS"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803915" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ezp-vJ-Ouj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8DM-24-Uid"/>
+                            <constraint firstItem="c3J-1l-ybK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="EQ7-3k-lh4"/>
+                            <constraint firstItem="Ezp-vJ-Ouj" firstAttribute="top" secondItem="c3J-1l-ybK" secondAttribute="bottom" constant="14" id="JIc-6W-QGn"/>
+                            <constraint firstItem="c3J-1l-ybK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="SDs-y9-pEs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c3J-1l-ybK" secondAttribute="trailing" constant="16" id="akV-6J-oYb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ezp-vJ-Ouj" secondAttribute="bottom" constant="20" id="zYu-BP-uVB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
