@@ -4,6 +4,8 @@
 App represents the digital version of popular board game Set.
 Grid layout class is provided by instructor of Stanford University.
 
+<img align="right" src="set.gif">
+
 
 ## Implemented bits
 * game engine desgin
