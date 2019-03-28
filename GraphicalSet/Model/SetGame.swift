@@ -1,6 +1,12 @@
 import Foundation
 
+// Struct represents engine of the game
+
 struct SetGame {
+    
+    // MARK: - Properities
+    
+    // deck with all the cards
     var deck: [Card] = {
         var deckSetUp = [Card]()
         for color in 1...3 {
@@ -17,7 +23,7 @@ struct SetGame {
         }
         return deckSetUp.shuffled()
     }()
-    
+
     var matchedDeck = [Card]()
     var matchedTrio = [Card]()
     var missmatchedTrio = [Card]()
@@ -63,8 +69,6 @@ struct SetGame {
         
         let result = colorFlag && symbolFlag && shadingFlag && numberFlag
         
-//                return true
-        //        return false
         return result
         
     }
@@ -95,7 +99,6 @@ struct SetGame {
     mutating func selectCard(at index: Int){
         let cardToSelect = beingPlayedCards[index]
         guard !matchedTrio.contains(cardToSelect) else { return }
-//        guard !matchedDeck.contains(cardToSelect) else { return }
         
         if !matchedTrio.isEmpty{
             removeMatchedTrioFromTable()

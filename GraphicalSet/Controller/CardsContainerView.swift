@@ -10,8 +10,10 @@ import UIKit
 
 class CardsContainerView: UIView {
     
+    //MARK: - Properities
     
     var buttons = [CardButton]()
+    
     private(set) var grid = Grid(layout: Grid.Layout.aspectRatio(3/2))
     
     private var centeredRect: CGRect {
@@ -23,6 +25,9 @@ class CardsContainerView: UIView {
         }
     }
     
+    
+    // MARK: - Layout methods
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -31,13 +36,15 @@ class CardsContainerView: UIView {
         for (i, button) in buttons.enumerated(){
             if let frame = grid[i]{
                 button.frame = frame.insetBy(dx: 2, dy: 2)
-//                button.layer.cornerRadius = 10
                 button.layer.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                 button.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-//                button.layer.borderWidth = 0.5
+                button.layer.borderWidth = 0.5
             }
         }
     }
+    
+    
+    //MARK: - Instance methods
     
     func addCardButtons(byAmount numberOfButtons: Int = 3) {
         let cardButtons = (0..<numberOfButtons).map { _ in CardButton() }
@@ -49,8 +56,7 @@ class CardsContainerView: UIView {
         grid.cellCount = buttons.count
         setNeedsLayout()
     }
-    
-    /// Removes all buttons from the container.
+  
     func clearCardContainer() {
         buttons = []
         grid.cellCount = 0
@@ -58,7 +64,6 @@ class CardsContainerView: UIView {
         setNeedsLayout()
     }
     
-    /// Removes n buttons from the button container.
     func removeCardButtons(byAmount numberOfCards: Int) {
         guard buttons.count >= numberOfCards else { return }
         

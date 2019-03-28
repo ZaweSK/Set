@@ -37,9 +37,6 @@ class CardButton: UIButton {
         case outlined
     }
     
-  
-    
-    
     var numberOfSymbols = 0 {
         didSet {
             setNeedsDisplay()
@@ -60,6 +57,16 @@ class CardButton: UIButton {
     
     var shading: Shading?  {
         didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+    var colorOfCard: UIColor? {
+        get{
+           return backgroundColor
+        }
+        set{
+            backgroundColor = newValue
             setNeedsDisplay()
         }
     }

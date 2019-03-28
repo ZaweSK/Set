@@ -8,9 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController
+{
+
+    // MARK: - Properities
     
     var game = SetGame()
+    
+     var selectedButtonsIndexes = [Int]()
+    
+    
+    // MARK: - Life Cycle of ViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +35,27 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         displayCards()
-        
     }
+    
+    // MARK: - Assign actions to Views
     
     private func assignTargetAction(){
         for button in cardsContainerView.buttons{
             button.addTarget(self, action: #selector(tapButtonGesture), for: .touchUpInside)
+        }
+    }
+    
+    // MARK: - UI Methods
+    
+    private func highlightMatchedCardButtons(){
+        for buttonIndex in selectedButtonsIndexes{
+            (cardsContainerView.buttons[buttonIndex]).backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        }
+    }
+    private func highlightMissmatchedCardButtons(){
+        print("nezhoda")
+        for buttonIndex in selectedButtonsIndexes{
+            (cardsContainerView.buttons[buttonIndex]).backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         }
     }
     
@@ -93,11 +116,9 @@ class ViewController: UIViewController {
             }else if game.missmatchedTrio.contains(currentCard){
                 cardButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
             }
-    
-            ////// DOKONCI
+
             
         }
-        
         
         
         handleDealMoreCardsButton()
@@ -108,7 +129,12 @@ class ViewController: UIViewController {
 //        dealMoreCardsButton.setColor()
     }
     
+   
+    
+    // MAK: - @IBActions & @IOutlets
     @IBOutlet weak var dealMoreCardsButton: UIButton!
+    
+    @IBOutlet weak var cardsContainerView: CardsContainerView!
     
     @IBAction func dealMoreCards(_ sender: UIButton) {
         guard game.deck.count > 0 else {return}
@@ -119,15 +145,6 @@ class ViewController: UIViewController {
     }
     
     
-    @objc func dealMoreCardsGesture(_ sender: UISwipeGestureRecognizer) {
-        switch sender.state{
-        case .ended:
-            dealMoreCards(dealMoreCardsButton)
-        default: break
-        }
-    }
-    
-
     
     @IBAction func shuffleGesture(_ sender: UIRotationGestureRecognizer) {
         switch sender.state{
@@ -138,7 +155,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var selectedButtonsIndexes = [Int]()
+    // MARK: - Target Actions
     
     @objc func tapButtonGesture(_ sender: UIButton){
         guard let index = cardsContainerView.buttons.index(of: sender as! CardButton) else {return}
@@ -146,22 +163,13 @@ class ViewController: UIViewController {
         displayCards()
     }
     
-    private func highlightMatchedCardButtons(){
-        for buttonIndex in selectedButtonsIndexes{
-            (cardsContainerView.buttons[buttonIndex]).backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+    @objc func dealMoreCardsGesture(_ sender: UISwipeGestureRecognizer) {
+        switch sender.state{
+        case .ended:
+            dealMoreCards(dealMoreCardsButton)
+        default: break
         }
     }
-    private func highlightMissmatchedCardButtons(){
-        print("nezhoda")
-        for buttonIndex in selectedButtonsIndexes{
-            (cardsContainerView.buttons[buttonIndex]).backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        }
-    }
-    
-    
-    
-    
-    @IBOutlet weak var cardsContainerView: CardsContainerView!
     
 }
 

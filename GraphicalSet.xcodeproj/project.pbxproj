@@ -45,6 +45,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D09F12E9224D013A00D4B056 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0B2BD6B21EE1BD1000B0405 /* Card.swift */,
+				D0B2BD6D21EE1BF4000B0405 /* SetGame.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D09F12EA224D014F00D4B056 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D0B2BD5B21EE1B98000B0405 /* ViewController.swift */,
+				D0B2BD6F21EE22F2000B0405 /* CardsContainerView.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		D0B2BD4D21EE1B98000B0405 = {
 			isa = PBXGroup;
 			children = (
@@ -64,13 +82,13 @@
 		D0B2BD5821EE1B98000B0405 /* GraphicalSet */ = {
 			isa = PBXGroup;
 			children = (
+				D09F12EA224D014F00D4B056 /* Controller */,
+				D09F12E9224D013A00D4B056 /* Model */,
 				D0B2BD7321EE279E000B0405 /* Views */,
 				D0B2BD5921EE1B98000B0405 /* AppDelegate.swift */,
 				D0B2BD6021EE1B99000B0405 /* Assets.xcassets */,
 				D0B2BD6221EE1B99000B0405 /* LaunchScreen.storyboard */,
 				D0B2BD6521EE1B99000B0405 /* Info.plist */,
-				D0B2BD6B21EE1BD1000B0405 /* Card.swift */,
-				D0B2BD6D21EE1BF4000B0405 /* SetGame.swift */,
 			);
 			path = GraphicalSet;
 			sourceTree = "<group>";
@@ -80,8 +98,6 @@
 			children = (
 				D0B2BD5D21EE1B98000B0405 /* Main.storyboard */,
 				D010532421EF0C3100CF4D01 /* CardButton.swift */,
-				D0B2BD5B21EE1B98000B0405 /* ViewController.swift */,
-				D0B2BD6F21EE22F2000B0405 /* CardsContainerView.swift */,
 				D010532621F0554200CF4D01 /* Grid.swift */,
 			);
 			path = Views;
